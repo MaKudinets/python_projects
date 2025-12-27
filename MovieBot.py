@@ -1,12 +1,14 @@
 import telebot
 import os
 from typing import Dict
+from dotenv import load_dotenv
 
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 
+load_dotenv()
 TELEGRAM_TOKEN = "8330197118:AAHqB3kC1d9qTGhtNIitFf-K97SQPRMCDqg"
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 os.environ["OPENROUTER_API_KEY"] = OPENROUTER_API_KEY
 
 # Telegram bot
@@ -111,12 +113,11 @@ def handle_movie_query(message):
     except Exception as e:
         bot.reply_to(
             message,
-            f"Ошибка: {str(e)[:120]}\nПопробуй /setcity Москва"
+            f"Ошибка: {str(e)[:120]}\nПопробуй /setcity имя города"
         )
 
-# =======================
 # Run
-# =======================
+
 if __name__ == "__main__":
     print("Кино-бот запущен!")
     bot.infinity_polling()
