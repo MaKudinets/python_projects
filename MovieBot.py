@@ -7,7 +7,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 
 load_dotenv()
-TELEGRAM_TOKEN = "8330197118:AAHqB3kC1d9qTGhtNIitFf-K97SQPRMCDqg"
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 os.environ["OPENROUTER_API_KEY"] = OPENROUTER_API_KEY
 
